@@ -26,7 +26,7 @@ public class Tables {
             c.setAutoCommit(false);
             executeSQL(c, "drop table if exists car cascade;" +
                     "create table car(\n" +
-                    " id bigint,\n" +
+                    " id bigserial not null,\n" +
                     " brand varchar,\n" +
                     " model varchar\n" +
                     ");");

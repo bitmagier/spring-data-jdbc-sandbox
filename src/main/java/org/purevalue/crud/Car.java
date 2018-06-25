@@ -4,7 +4,7 @@ import org.springframework.data.annotation.Id;
 
 /**
  * create table car(
- *   id bigint,
+ *   id bigserial,
  *   brand varchar,
  *   model varchar
  * );
@@ -15,8 +15,7 @@ public class Car {
     String brand;
     String model;
 
-    public Car(Long id, String brand, String model) {
-        this.id = id;
+    public Car(String brand, String model) {
         this.brand = brand;
         this.model = model;
     }

@@ -23,7 +23,7 @@ public class Bean1 {
     }
 
     public void insertCar() {
-        final Car car = carRepository.save(new Car(2L, "BMW", "5"));
+        final Car car = carRepository.save(new Car("BMW", "5"));
         log.info("saved car: {}", car);
     }
 
