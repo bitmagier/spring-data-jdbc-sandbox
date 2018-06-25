@@ -36,9 +36,11 @@ public class Application {
                 new AnnotationConfigApplicationContext(Application.class);
 
         final Bean1 bean = context.getBean(Bean1.class);
-        bean.insertCar();
+        bean.insertCars();
         bean.listCarsByRepoFunction();
         bean.listCarsByQuery();
+        bean.findCarsByBrand("BMW");
+        bean.findBrandsLike("%B%");
     }
 
     @Bean(name = "transactionManager")

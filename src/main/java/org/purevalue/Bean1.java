@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Component
@@ -22,18 +23,33 @@ public class Bean1 {
         this.carRepository = carRepository;
     }
 
-    public void insertCar() {
-        final Car car = carRepository.save(new Car("BMW", "5"));
-        log.info("saved car: {}", car);
+    void insertCars() {
+        final List<Car> cars = new ArrayList<>();
+        cars.add( carRepository.save(new Car("BMW", "5")) );
+        cars.add( carRepository.save(new Car("BMW", "3")) );
+        cars.add( carRepository.save(new Car("Audi", "R8")) );
+        cars.add( carRepository.save(new Car("Nissan", "370Z")) );
+
+        log.info("saved car: {}", cars);
     }
 
-    public void listCarsByRepoFunction() {
+    void listCarsByRepoFunction() {
         final List<Car> cars = carRepository.getAll();
         log.info("Repo: found cars: {}", cars);
     }
 
-    public void listCarsByQuery() {
+    void listCarsByQuery() {
         final Iterable<Car> cars = carRepository.findAll();
         log.info("Repo findAll(): {}", cars);
+    }
+
+    void findCarsByBrand(String brand) {
+        final List<Car> cars = carRepository.findByBrand(brand);
+        log.info("Repo findByBrand(): {}", cars);
+    }
+
+    void findBrandsLike(String s) {
+        final List<String> brands = carRepository.findBrandsLike(s);
+        log.info("Repo findBrandsLike({}): {}", s, brands);
     }
 }

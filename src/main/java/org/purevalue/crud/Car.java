@@ -11,13 +11,25 @@ import org.springframework.data.annotation.Id;
  */
 public class Car {
     @Id
-    Long id;
-    String brand;
-    String model;
+    private Long id;
+    private String brand;
+    private String model;
 
     public Car(String brand, String model) {
         this.brand = brand;
         this.model = model;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getBrand() {
+        return brand;
+    }
+
+    public String getModel() {
+        return model;
     }
 
     @Override
